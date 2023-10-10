@@ -1,0 +1,11 @@
+08c5741bff00a00ebaddf2e133211005
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const src_1 = __importDefault(require("../src"));
+test("adds 1 + 2 to equal 3", () => {
+    expect((0, src_1.default)(1, 2)).toBe(3);
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL2hvbWUvamVhbmRldi9EZXYvYXV0aC1kZGQvdGVzdC9pbmRleC50ZXN0LnRzIiwibWFwcGluZ3MiOiI7Ozs7O0FBQUEsaURBQXlCO0FBRXpCLElBQUksQ0FBQyx1QkFBdUIsRUFBRSxHQUFHLEVBQUU7SUFDakMsTUFBTSxDQUFDLElBQUEsYUFBRyxFQUFDLENBQUMsRUFBRSxDQUFDLENBQUMsQ0FBQyxDQUFDLElBQUksQ0FBQyxDQUFDLENBQUMsQ0FBQztBQUM1QixDQUFDLENBQUMsQ0FBQyIsIm5hbWVzIjpbXSwic291cmNlcyI6WyIvaG9tZS9qZWFuZGV2L0Rldi9hdXRoLWRkZC90ZXN0L2luZGV4LnRlc3QudHMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHN1bSBmcm9tIFwiLi4vc3JjXCI7XG5cbnRlc3QoXCJhZGRzIDEgKyAyIHRvIGVxdWFsIDNcIiwgKCkgPT4ge1xuICBleHBlY3Qoc3VtKDEsIDIpKS50b0JlKDMpO1xufSk7XG4iXSwidmVyc2lvbiI6M30=

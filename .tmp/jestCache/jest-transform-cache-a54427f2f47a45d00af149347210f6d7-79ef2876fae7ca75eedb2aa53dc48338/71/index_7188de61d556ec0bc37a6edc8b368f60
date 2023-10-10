@@ -1,0 +1,6 @@
+76ed89794d00c6ea4ac2e8e5139eaf8e
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const sum = (a, b) => a + b;
+exports.default = sum;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL2hvbWUvamVhbmRldi9EZXYvYXV0aC1kZGQvc3JjL2luZGV4LnRzIiwibWFwcGluZ3MiOiI7O0FBQUEsTUFBTSxHQUFHLEdBQUcsQ0FBQyxDQUFTLEVBQUUsQ0FBUyxFQUFFLEVBQUUsQ0FBQyxDQUFDLEdBQUcsQ0FBQyxDQUFDO0FBQzVDLGtCQUFlLEdBQUcsQ0FBQyIsIm5hbWVzIjpbXSwic291cmNlcyI6WyIvaG9tZS9qZWFuZGV2L0Rldi9hdXRoLWRkZC9zcmMvaW5kZXgudHMiXSwic291cmNlc0NvbnRlbnQiOlsiY29uc3Qgc3VtID0gKGE6IG51bWJlciwgYjogbnVtYmVyKSA9PiBhICsgYjtcbmV4cG9ydCBkZWZhdWx0IHN1bTtcbiJdLCJ2ZXJzaW9uIjozfQ==
