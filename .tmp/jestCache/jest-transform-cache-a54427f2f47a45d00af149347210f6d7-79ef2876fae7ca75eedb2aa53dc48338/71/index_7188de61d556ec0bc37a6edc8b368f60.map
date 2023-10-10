@@ -1,1 +1,0 @@
-{"file":"/home/jeandev/Dev/auth-ddd/src/index.ts","mappings":";;AAAA,MAAM,GAAG,GAAG,CAAC,CAAS,EAAE,CAAS,EAAE,EAAE,CAAC,CAAC,GAAG,CAAC,CAAC;AAC5C,kBAAe,GAAG,CAAC","names":[],"sources":["/home/jeandev/Dev/auth-ddd/src/index.ts"],"sourcesContent":["const sum = (a: number, b: number) => a + b;\nexport default sum;\n"],"version":3}
