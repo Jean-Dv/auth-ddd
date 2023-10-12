@@ -20,6 +20,9 @@
       "pnpm run prettier:fix"
     ]
   },
+  "_moduleAliases": {
+    "@Shared": "src/Contexts/Shared"
+  },
   "devDependencies": {
     "@commitlint/cli": "17.7.2",
     "@commitlint/config-conventional": "17.7.0",
@@ -46,6 +49,7 @@
     "typescript": "5.2.2"
   },
   "dependencies": {
+    "module-alias": "2.2.3",
     "mongodb": "6.1.0"
   }
 }
