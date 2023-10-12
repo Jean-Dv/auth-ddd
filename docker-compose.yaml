@@ -1,0 +1,9 @@
+version: '3.9'
+
+services:
+  mongo:
+    image: mongo:5.0.0
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/auth-backend-test
+    ports:
+      - 27017:27017
