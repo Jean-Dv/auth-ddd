@@ -7,3 +7,7 @@ services:
       - MONGO_URL=mongodb://mongo:27017/auth-backend-test
     ports:
       - 27017:27017
+  redis:
+    image: redis:7.2.1
+    ports:
+      - 6379:6379
