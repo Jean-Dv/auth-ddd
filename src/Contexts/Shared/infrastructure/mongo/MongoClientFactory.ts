@@ -14,7 +14,7 @@ export class MongoClientFactory {
    *
    * @param {string} contextName - The name of the context to create the client.
    * @param {MongoConfig} config - The configuration to create the client.
-   * @returns {MongoClient} - The mongo client.
+   * @returns {Promise<MongoClient>} - The mongo client.
    */
   static async createClient(
     contextName: string,
