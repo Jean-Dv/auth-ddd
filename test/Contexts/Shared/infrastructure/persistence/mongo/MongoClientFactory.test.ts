@@ -1,5 +1,5 @@
 import { MongoClient } from 'mongodb'
-import { MongoClientFactory } from '@Shared/infrastructure/mongo/MongoClientFactory'
+import { MongoClientFactory } from '@Shared/infrastructure/persistence/mongo/MongoClientFactory'
 
 describe('MongoClientFactory', () => {
   let client: MongoClient

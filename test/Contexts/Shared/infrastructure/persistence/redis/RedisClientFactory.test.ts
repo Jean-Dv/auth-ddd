@@ -1,7 +1,7 @@
 import {
   RedisClientFactory,
   type RedisClientType
-} from '@Shared/infrastructure/redis/RedisClientFactory'
+} from '@Shared/infrastructure/persistence/redis/RedisClientFactory'
 
 describe('RedisClientFactory', () => {
   let client: RedisClientType
