@@ -1,5 +1,8 @@
 version: '3.9'
 
+networks:
+  auth-network:
+
 services:
   mongo:
     image: mongo:5.0.0
@@ -7,7 +10,27 @@ services:
       - MONGO_URL=mongodb://mongo:27017/auth-backend-test
     ports:
       - 27017:27017
+    networks:
+      - auth-network
+
   redis:
     image: redis:7.2.1
     ports:
       - 6379:6379
+
+  rabbitmq:
+    image: 'rabbitmq:3.8-management'
+    volumes:
+      - './docker/conf/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf'
+    environment:
+      - RABBITMQ_LOGS=/var/log/rabbitmq/rabbit.log
+    ports:
+      - 5672:5672
+      - 15672:15672
+    healthcheck:
+      test: ['CMD', 'rabbitmqctl', 'status']
+      interval: 10s
+      timeout: 10s
+      retries: 3
+    networks:
+      - auth-network
