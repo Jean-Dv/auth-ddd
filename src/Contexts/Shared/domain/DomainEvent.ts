@@ -74,4 +74,5 @@ export interface DomainEventClass {
  * An interface representing the attributes of a domain event.
  * This must be a defined in derived classes to provide a specific attribute structure.
  */
-type DomainEventAttributes = Record<string, unknown>
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type DomainEventAttributes = any
