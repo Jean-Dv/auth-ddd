@@ -74,4 +74,4 @@ export interface DomainEventClass {
  * An interface representing the attributes of a domain event.
  * This must be a defined in derived classes to provide a specific attribute structure.
  */
-type DomainEventAttributes = unknown
+type DomainEventAttributes = Record<string, unknown>
