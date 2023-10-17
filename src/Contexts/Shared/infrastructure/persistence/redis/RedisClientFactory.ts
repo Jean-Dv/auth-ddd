@@ -13,9 +13,9 @@ export class RedisClientFactory {
    * Create a Redis client for the specified context. If a client for the given context name
    * already exists, it will be reused.
    *
-   * @param {string} contextName - The name of the Redis client context.
-   * @param {RedisConfig} config - The Redis configuration for the client.
-   * @returns {Promise<RedisClientType>} - A promise that resolves to the Redis client.
+   * @param contextName - The name of the Redis client context.
+   * @param config - The Redis configuration for the client.
+   * @returns - A promise that resolves to the Redis client.
    */
   public static async createClient(
     contextName: string,
@@ -38,8 +38,8 @@ export class RedisClientFactory {
   /**
    * Retrieve a Redis client for the specified context if it exists.
    *
-   * @param {string} contextName - The name of the Redis client context.
-   * @returns {RedisClientType | null} - The redis client if it exists, or null if it hasn't been created.
+   * @param contextName - The name of the Redis client context.
+   * @returns - The redis client if it exists, or null if it hasn't been created.
    */
   private static getClient(contextName: string): RedisClientType | null {
     return RedisClientFactory.clients[contextName]
@@ -49,7 +49,7 @@ export class RedisClientFactory {
    * Create a Redis client based on the provided configuration.
    *
    * @param config - The Redis configuration for the client.
-   * @returns {Promise<RedisClientType>} - A promise that resolves to the created Redis client.
+   * @returns - A promise that resolves to the created Redis client.
    */
   private static async create(config: RedisConfig): Promise<RedisClientType> {
     const client = createClient({ url: config.url })

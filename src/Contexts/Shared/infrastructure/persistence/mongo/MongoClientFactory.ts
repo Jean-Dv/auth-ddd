@@ -12,9 +12,9 @@ export class MongoClientFactory {
   /**
    * Creates a mongo client and registers it if doesn't exist.
    *
-   * @param {string} contextName - The name of the context to create the client.
-   * @param {MongoConfig} config - The configuration to create the client.
-   * @returns {Promise<MongoClient>} - The mongo client.
+   * @param contextName - The name of the context to create the client.
+   * @param config - The configuration to create the client.
+   * @returns - The mongo client.
    */
   static async createClient(
     contextName: string,
@@ -32,8 +32,8 @@ export class MongoClientFactory {
   /**
    * Gets a mongo client by context name.
    *
-   * @param {string} contextName - The name of the context to get the client.
-   * @returns {MongoClient | null} - The mongo client or null.
+   * @param contextName - The name of the context to get the client.
+   * @returns - The mongo client or null.
    */
   private static getClient(contextName: string): MongoClient | null {
     return MongoClientFactory.clients[contextName]
@@ -42,8 +42,8 @@ export class MongoClientFactory {
   /**
    * Creates and connects a mongo client.
    *
-   * @param {MongoConfig} config - The configuration for the client.
-   * @returns {MongoClient} - The mongo client.
+   * @param config - The configuration for the client.
+   * @returns - The mongo client.
    */
   private static async createAndConnectClient(
     config: MongoConfig
@@ -56,9 +56,8 @@ export class MongoClientFactory {
   /**
    * Registers a mongo client by context name.
    *
-   * @param {MongoClient} client - The mongo client to register.
-   * @param {string} contextName - The name of the context to register the client.
-   * @returns {void}
+   * @param client - The mongo client to register.
+   * @param contextName - The name of the context to register the client.
    */
   private static registerClient(
     client: MongoClient,
