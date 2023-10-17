@@ -1,29 +1,39 @@
-import { type EventBus } from '@Shared/domain/EventBus'
-import { type RabbitMQConnection } from './RabbitMQConnection'
-import { type RabbitMQqueueFormatter } from './RabbitMQqueueFormatter'
-import { type DomainEventSubscribers } from '../DomainEventSubscribers'
-import { DomainEventDeserializer } from '../DomainEventDeserializer'
-import { RabbitMQConsumerFactory } from './RabbitMQConsumerFactory'
 import { type DomainEvent } from '@Shared/domain/DomainEvent'
+import { type EventBus } from '@Shared/domain/EventBus'
+import { DomainEventDeserializer } from '../DomainEventDeserializer'
 import { DomainEventJsonSerializer } from '../DomainEventJsonSerializer'
+import { type DomainEventSubscribers } from '../DomainEventSubscribers'
+import { type FailoverPublisher } from '../FailoverPublisher/FailoverPublisher'
+import { type RabbitMQConnection } from './RabbitMQConnection'
+import { RabbitMQConsumerFactory } from './RabbitMQConsumerFactory'
+import { type RabbitMQqueueFormatter } from './RabbitMQqueueFormatter'
 
 /**
  * A class that implements the `EventBus` for publishing domain events and
  * managing event subscribers using RabbitMQ.
  */
 export class RabbitMQEventBus implements EventBus {
+  private readonly failoverPublisher: FailoverPublisher
   private readonly connection: RabbitMQConnection
   private readonly exchangeName: string
   private readonly queueNameFormatter: RabbitMQqueueFormatter
   private readonly maxRetries: number
 
   constructor(params: {
+    failoverPublisher: FailoverPublisher
     connection: RabbitMQConnection
     exchangeName: string
     queueNameFormatter: RabbitMQqueueFormatter
     maxRetries: number
   }) {
-    const { connection, exchangeName, queueNameFormatter, maxRetries } = params
+    const {
+      failoverPublisher,
+      connection,
+      exchangeName,
+      queueNameFormatter,
+      maxRetries
+    } = params
+    this.failoverPublisher = failoverPublisher
     this.connection = connection
     this.exchangeName = exchangeName
     this.queueNameFormatter = queueNameFormatter
@@ -34,6 +44,7 @@ export class RabbitMQEventBus implements EventBus {
     subscribers: DomainEventSubscribers
   ): Promise<void> {
     const deserializer = DomainEventDeserializer.configure(subscribers)
+    this.failoverPublisher.setDeserializer(deserializer)
     const consumerFactory = new RabbitMQConsumerFactory(
       deserializer,
       this.connection,
@@ -55,15 +66,19 @@ export class RabbitMQEventBus implements EventBus {
 
   public async publish(events: DomainEvent[]): Promise<void> {
     for (const event of events) {
-      const routingKey = event.eventName
-      const content = this.toBuffer(event)
-      const options = this.options(event)
-      await this.connection.publish({
-        routingKey,
-        content,
-        options,
-        exchange: this.exchangeName
-      })
+      try {
+        const routingKey = event.eventName
+        const content = this.toBuffer(event)
+        const options = this.options(event)
+        await this.connection.publish({
+          routingKey,
+          content,
+          options,
+          exchange: this.exchangeName
+        })
+      } catch (error) {
+        await this.failoverPublisher.publish(event)
+      }
     }
   }
 
