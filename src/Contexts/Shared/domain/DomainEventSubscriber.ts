@@ -8,7 +8,7 @@ export interface DomainEventSubscriber<T extends DomainEvent> {
    * Returns an array of DomainClass instances to which
    * the subscriber is subscribed.
    *
-   * @returns {DomainEventClass[]} - An array of DomainClass instances.
+   * @returns An array of DomainClass instances.
    */
   subscribedTo: () => DomainEventClass[]
 
@@ -16,8 +16,7 @@ export interface DomainEventSubscriber<T extends DomainEvent> {
    * Handles a domain event by implementing specific logic
    * when the event occurs.
    *
-   * @param event {DomainEvent} - The domain event to handle.
-   * @returns {Promise<void>} - A promise that resolves when the event is handled.
+   * @param event - The domain event to handle.
    */
   on: (event: T) => Promise<void>
 }

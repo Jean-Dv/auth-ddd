@@ -27,7 +27,7 @@ export abstract class DomainEvent {
    * An abstract method that must be implemented in derived classes
    * to convert the event into a representation of attributes.
    *
-   * @returns {DomainEventAttributes} - The representation of the event.
+   * @returns The representation of the event.
    */
   public abstract toPrimitives(): DomainEventAttributes
 
@@ -35,8 +35,8 @@ export abstract class DomainEvent {
    * A static method that allows creating an instance of DomainEvent
    * from primitive attributes.
    *
-   * @param params {Object} - The primitive attributes required to create the event.
-   * @returns {DomainEvent} - An instance of DomainEvent.
+   * @param params - The primitive attributes required to create the event.
+   * @returns An instance of DomainEvent.
    */
   public static fromPrimitives: (params: {
     aggregateId: string
@@ -59,8 +59,8 @@ export interface DomainEventClass {
    * A method that allows creating an instance of DomainEvent
    * from primitive attributes.
    *
-   * @param params {Object} - The primitive attributes required to create the event.
-   * @returns {DomainEvent} - An instance of DomainEvent.
+   * @param params - The primitive attributes required to create the event.
+   * @returns An instance of DomainEvent.
    */
   fromPrimitives: (params: {
     aggregateId: string

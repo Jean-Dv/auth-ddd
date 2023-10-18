@@ -18,7 +18,7 @@ export class Uuid {
    * This method is used to create a new instance of the value object
    * with value random.
    *
-   * @returns {Uuid} - The new instance of the value object.
+   * @returns The new instance of the value object.
    */
   public static random(): Uuid {
     return new Uuid(uuid())
@@ -27,8 +27,8 @@ export class Uuid {
   /**
    * This method is used to validate the value is correct uuid.
    *
-   * @param {string} id - The value to validate.
-   * @throws {InvalidArgumentError} - If the value is not valid.
+   * @param id - The value to validate.
+   * @throws If the value is not valid.
    */
   private ensureIsValidUuid(id: string): void {
     if (!isValid(id)) {
@@ -41,7 +41,7 @@ export class Uuid {
   /**
    * This method is used to convert in primitive type the value object.
    *
-   * @returns {string} - The value converted.
+   * @returns The value converted.
    */
   public toString(): string {
     return this.value
