@@ -21,7 +21,7 @@ services:
   rabbitmq:
     image: 'rabbitmq:3.8-management'
     volumes:
-      - './docker/conf/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf'
+      - './docker/rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf'
     environment:
       - RABBITMQ_LOGS=/var/log/rabbitmq/rabbit.log
     ports:
